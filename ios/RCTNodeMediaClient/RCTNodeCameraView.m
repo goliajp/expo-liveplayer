@@ -1,11 +1,3 @@
-//
-//  RCTNodeCameraView.m
-//  
-//
-//  Created by Mingliang Chen on 2017/12/12.
-//  Copyright © 2017年 NodeMedia. All rights reserved.
-//
-
 #import "RCTNodeMediaClient.h"
 #import "RCTNodeCameraView.h"
 #import <NodeMediaClient/NodeMediaClient.h>

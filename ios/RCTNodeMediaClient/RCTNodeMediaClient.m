@@ -1,17 +1,8 @@
-//
-//  RCTNodeMediaClient.m
-//  RCTNodeMediaClient
-//
-//  Created by Mingliang Chen on 2018/2/28.
-//  Copyright © 2018年 Mingliang Chen. All rights reserved.
-//
-
 #import "RCTNodeMediaClient.h"
 
 @implementation RCTNodeMediaClient
 
 RCT_EXPORT_MODULE(NodeMediaClient);
-
 
 static NSString *_license = @"";
 

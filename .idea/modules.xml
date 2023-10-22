@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/react-native-nodemediaclient.iml" filepath="$PROJECT_DIR$/.idea/react-native-nodemediaclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/expo-liveplayer.iml" filepath="$PROJECT_DIR$/.idea/expo-liveplayer.iml" />
     </modules>
   </component>
 </project>

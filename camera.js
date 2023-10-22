@@ -1,92 +1,80 @@
-//
-//  NodeCameraModule.js
-//
-//  Created by Mingliang Chen on 2017/11/29.
-//  Copyright © 2017年 NodeMedia. All rights reserved.
-//
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
+import { findNodeHandle, requireNativeComponent, UIManager, View } from 'react-native'
 
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import { requireNativeComponent, View, UIManager, findNodeHandle } from 'react-native';
-
-
-
-var RCT_VIDEO_REF = 'NodeCameraView';
+const RCT_VIDEO_REF = 'NodeCameraView'
 
 class NodeCameraView extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
+
   _onChange(event) {
     if (!this.props.onStatus) {
-      return;
+      return
     }
-    this.props.onStatus(event.nativeEvent.code, event.nativeEvent.msg);
+    this.props.onStatus(event.nativeEvent.code, event.nativeEvent.msg)
   }
 
   switchCamera() {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this.refs[RCT_VIDEO_REF]),
       UIManager.getViewManagerConfig('RCTNodeCamera').Commands.switchCamera,
-      null
-    );
+      null,
+    )
   }
 
   flashEnable(enable) {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this.refs[RCT_VIDEO_REF]),
       UIManager.getViewManagerConfig('RCTNodeCamera').Commands.flashEnable,
-      [enable]
-    );
+      [enable],
+    )
   }
 
   startPreview() {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this.refs[RCT_VIDEO_REF]),
       UIManager.getViewManagerConfig('RCTNodeCamera').Commands.startprev,
-      null
-    );
+      null,
+    )
   }
 
   stopPreview() {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this.refs[RCT_VIDEO_REF]),
       UIManager.getViewManagerConfig('RCTNodeCamera').Commands.stopprev,
-      null
-    );
+      null,
+    )
   }
 
   start() {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this.refs[RCT_VIDEO_REF]),
       UIManager.getViewManagerConfig('RCTNodeCamera').Commands.start,
-      null
-    );
+      null,
+    )
   }
 
   stop() {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this.refs[RCT_VIDEO_REF]),
       UIManager.getViewManagerConfig('RCTNodeCamera').Commands.stop,
-      null
-    );
+      null,
+    )
   }
 
   render() {
-    return <RCTNodeCamera
-      {...this.props}
-      ref={RCT_VIDEO_REF}
-      onChange={this._onChange.bind(this)}
-    />;
-  };
+    return <RCTNodeCamera {...this.props} ref={RCT_VIDEO_REF} onChange={this._onChange.bind(this)} />
+  }
 }
 
-NodeCameraView.name = RCT_VIDEO_REF;
+NodeCameraView.name = RCT_VIDEO_REF
 NodeCameraView.propTypes = {
   outputUrl: PropTypes.string,
   camera: PropTypes.shape({
     cameraId: PropTypes.oneOf([0, 1]),
-    cameraFrontMirror: PropTypes.bool
+    cameraFrontMirror: PropTypes.bool,
   }),
   audio: PropTypes.shape({
     bitrate: PropTypes.number,
@@ -98,19 +86,19 @@ NodeCameraView.propTypes = {
     bitrate: PropTypes.number,
     profile: PropTypes.oneOf([0, 1, 2]),
     fps: PropTypes.oneOf([15, 20, 24, 30]),
-    videoFrontMirror: PropTypes.bool
+    videoFrontMirror: PropTypes.bool,
   }),
-  autopreview:PropTypes.bool,
+  autopreview: PropTypes.bool,
   denoise: PropTypes.bool,
   dynamicRateEnable: PropTypes.bool,
   smoothSkinLevel: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
-  cryptoKey:PropTypes.string,
+  cryptoKey: PropTypes.string,
   onStatus: PropTypes.func,
-  ...View.propTypes // 包含默认的View的属性
-};
+  ...View.propTypes, // 包含默认的View的属性
+}
 
 const RCTNodeCamera = requireNativeComponent('RCTNodeCamera', NodeCameraView, {
-  nativeOnly: { onChange: true }
-});
+  nativeOnly: { onChange: true },
+})
 
-module.exports = NodeCameraView;
+module.exports = NodeCameraView
